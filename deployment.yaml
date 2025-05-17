@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitoring-app
+spec:
+  replicas: 3  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: monitoring-app
+  template:
+    metadata:
+      labels:
+        app: monitoring-app
+    spec:
+      containers:
+      - name: monitoring-app
+        image:  ryanspeirs/monitoring-app:latest # put dockerhub image name here
+        ports:
+        - containerPort: 8080
